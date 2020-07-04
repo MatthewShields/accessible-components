@@ -1,0 +1,104 @@
+$accordion-border-width: 1px !default;
+$accordion-border-color: black !default;
+$accordion-bg: #fff !default;
+$accordion-bg--focus: #d1dceb !default;
+$accordion-text-color: black !default;
+
+$accordion-handle-width: 3em !default;
+$accordion-arrow-scale: 0.5 !default;
+
+$accordion-content-vpad: 1em !default;
+$accordion-content-hpad: 1.5em !default;
+
+// Size of the gap between each accordion item
+$accordion-gap: 2em;
+
+.accordion {
+  padding: 0;
+  list-style: none;
+    &__item {
+        border: $accordion-border-width solid $accordion-border-color;
+        background-color: $accordion-bg;
+        margin-top: $accordion-gap;
+    }
+
+    &__title {
+      margin: 0;
+    }
+
+    &__trigger {
+        color: $accordion-text-color;
+        font-weight: 700;
+        margin: 0;
+        width: 100%;
+        border: 0;
+        padding: $accordion-content-vpad ($accordion-content-hpad + $accordion-handle-width) $accordion-content-vpad $accordion-content-hpad;
+        position: relative;
+        background: transparent;
+        font-size: inherit;
+        text-align: left;
+        cursor: pointer;
+
+        .focussed-trigger & {
+          background: #ededed;
+        }
+
+        &:focus {
+          background: $accordion-bg--focus;
+        }
+
+    }
+    &__handle {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: $accordion-handle-width;
+        background-color: $accordion-border-color;
+        border-left: $accordion-border-width solid $accordion-border-color;
+        svg {
+            position: absolute;
+            width: (100% * (1 - $accordion-arrow-scale));
+            height: (100% * (1 - $accordion-arrow-scale));
+            top: (100% * ((1 - $accordion-arrow-scale) / 2));
+            left: (100% * ((1 - $accordion-arrow-scale) / 2));
+            fill: transparent;
+            stroke: #fff;
+            stroke-width: 3;
+            overflow: visible;
+            transform-origin: 50% 50%;
+            transform: rotate(0);
+            transition: 0.3s transform ease;
+        }
+
+        .focussed-trigger & {
+          background-color: #474747;
+        }
+    }
+
+    &__trigger:focus &__handle {
+      background-color: #335c91;
+    }
+
+    &__item.open &__handle svg {
+        transform: rotate(180deg);
+    }
+    &__content {
+        display: none;
+        padding: 1.5rem;
+        border-top: $accordion-border-width solid $accordion-border-color;
+        &>*:first-child {
+            margin-top: 0;
+        }
+        &>*:last-child {
+            margin-bottom: 0;
+        }
+    }
+    &__content--active {
+      display: block;
+    }
+}
+
+/* purgecss start ignore */
+
+/* purgecss end ignore */

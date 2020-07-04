@@ -1,0 +1,145 @@
+////////////////////////////////////////
+// Tailwind Imports - Optional
+////////////////////////////////////////
+
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+
+////////////////////////////////////////
+// Utils
+////////////////////////////////////////
+
+// @import 'utils/variables';
+// @import 'utils/mixins';
+
+////////////////////////////////////////
+// Component Imports
+////////////////////////////////////////
+
+/* purgecss start ignore */
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  background: #3e3347;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  color: #fff;
+}
+
+.wrapper {
+  margin: 100px auto;
+  padding: 0 40px;
+  max-width: 1000px;
+}
+
+.demo-title {
+  padding-left: 30px;
+  position: relative;
+  margin: 1rem 0;
+  font-size: 1.5rem;
+
+  &:before {
+    content: '';
+    background: #f5f3df;
+    width: 3px;
+    height: 200%;
+    position: absolute;
+    top: -16px;
+    left: 0;
+  }
+
+  &:after {
+    content: '';
+    background: #f5f3df;
+    width: 20px;
+    height: 3px;
+    position: absolute;
+    top: -16px;
+    left: 0;
+  }
+}
+
+.demo-wrapper {
+  padding: 2rem;
+  // border: 1px black solid;
+  background: #f5f3df;
+  border-radius: 0.75rem;
+  color: #000;
+
+  h1, h2,h3 {
+    color: #000;
+  }
+
+  >*:first-child {
+    margin-top: 0;
+  }
+}
+
+.demo-title + .demo-wrapper {
+  border-radius: 0 0.75rem 0.75rem 0.75rem;
+}
+
+h1, h2,h3 {
+  color: #fff;
+}
+
+h2 {
+  margin: 4rem 0 1rem;
+}
+
+h3 {
+  margin: 3rem 0 1rem;
+}
+
+.page-title {
+  // margin: 0 0 3rem;
+}
+
+.requirements-table {
+  text-align: left;
+  border-collapse: collapse;
+  width: 100%;
+  td {
+    border-top: 2px #c4b899 solid;
+    &:nth-child(1) {
+      font-weight: 500;
+    }
+  }
+  th {
+    font-size: 1.15rem;
+  }
+  th,td {
+    padding: 15px 0 15px 20px;
+    vertical-align: top;
+    &:nth-child(1) {
+      width: 130px;
+      padding-left: 0;
+    }
+  }
+}
+
+hr {
+  border: 0;
+  height: 2px;
+  background: #948a6f;
+  margin: 3rem 0;
+}
+
+.source-code {
+  max-height: 400px;
+  overflow: auto;
+  background: #292929;
+  color: white;
+  padding: 2rem;
+}
+/* purgecss end ignore */
+
+@import 'imports/example';
+@import 'imports/accordion';
+@import 'imports/modal';
+@import 'imports/tabs';
+@import 'imports/slider';
