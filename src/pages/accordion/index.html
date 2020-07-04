@@ -7,41 +7,45 @@
 {% extends '../../layout/index.html' %}
 {% block content %}
 
-<div class="wrapper">
-  <h1 class="page-title">Building an Accessible Accordion</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa nulla veritatis beatae ullam quas repellendus praesentium corporis deserunt ab porro alias debitis voluptatum, dignissimos adipisci, dolor laborum minus hic!</p>
+<div class="wrapper page-intro">
+  <h1 class="page-title">Accessible Accordions</h1>
+  <p>Accordions are a widely used pattern in websites, they allow the reduction of the size of the page while not removing content for the user. You should make sure though that they are the correct pattern to use for your situation, and if you do, ensure they they are accessible to everyone.</p>
 </div>
 
 <div class="wrapper">
-  <h2 class="demo-title">Accordion Demo</h2>
+  <h2 class="demo-title">Should I use an Accordion?</h2>
+  <div class="demo-wrapper">
+    <p>The first question would be, is <strong>all of the content</strong> relevant and neccessary for the user?</p>
+    <p>If all of the content is needed, then to require a user to progress through all of the accordions isn't going to provide a good user experience for anyone. This bad user experience could be esspecially bad for those with accessibility needs.</p>
+    <p>If only some of the content will be relevant to the user though, accordions might be a benefit. An example of this would be an FAQ, where a user may be looking for a specific question, and so only some of the answers would be relevant.</p>
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2 class="demo-title">Accessible Accordion Interactive Demo</h2>
   <div class="demo-wrapper">
     {% include '../../partials/accordion.html' with {
-      'title': 'Accordion Group 1',
+      'title': 'A title can be helpful to provide an introduction to what the purpose or topic the following group of accordions is.',
       'description': '
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa nulla
-        veritatis beatae ullam quas repellendus praesentium corporis deserunt ab
-        porro alias debitis voluptatum, dignissimos adipisci, dolor laborum minus
-        hic!
-      </p>
+      <p>If needed then you can also provide a more long form bit of context, this serves a purpose for all users.</p>
       ',
       'block_id': 1,
       'open_first': true,
       'accordions': [
         {
-          'title': 'Group 1 Item 1',
+          'title': 'A specific title for this item',
           'text': '
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa nulla veritatis beatae ullam quas repellendus praesentium.</p>
           '
         },
         {
-          'title': 'Group 1 Item 2',
+          'title': 'A specific title for this item',
           'text': '
           <p>Lorem ipsum dolor sit amet, <a href="">consectetur</a> adipisicing elit. At culpa nulla veritatis beatae ullam quas repellendus praesentium.</p>
           '
         },
         {
-          'title': 'Group 1 Item 3',
+          'title': 'A specific title for this item',
           'text': '
           <p>Lorem ipsum dolor sit amet, <a href="">consectetur</a> adipisicing elit. At culpa nulla veritatis beatae ullam quas repellendus praesentium.</p>
           '
@@ -49,32 +53,27 @@
       ],
     } %}
     {% include '../../partials/accordion.html' with {
-      'title': 'Accordion Group 2',
+      'title': 'As there are two groups you can give context to what the difference is between them with a title.',
       'description': '
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa nulla
-        veritatis beatae ullam quas repellendus praesentium corporis deserunt ab
-        porro alias debitis voluptatum, dignissimos adipisci, dolor laborum minus
-        hic!
-      </p>
+      <p>If needed then you can also provide a more long form bit of context, this serves a purpose for all users.</p>
       ',
       'block_id': 2,
       'open_first': false,
       'accordions': [
         {
-          'title': 'Group 2 Item 1',
+          'title': 'A specific title for this item',
           'text': '
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa nulla veritatis beatae ullam quas repellendus praesentium.</p>
           '
         },
         {
-          'title': 'Group 2 Item 2',
+          'title': 'A specific title for this item',
           'text': '
           <p>Lorem ipsum dolor sit amet, <a href="">consectetur</a> adipisicing elit. At culpa nulla veritatis beatae ullam quas repellendus praesentium.</p>
           '
         },
         {
-          'title': 'Group 2 Item 3',
+          'title': 'A specific title for this item',
           'text': '
           <p>Lorem ipsum dolor sit amet, <a href="">consectetur</a> adipisicing elit. At culpa nulla veritatis beatae ullam quas repellendus praesentium.</p>
           '
@@ -89,7 +88,7 @@
   <div class="demo-wrapper">
 
     <h3>Design Requirements</h3>
-    <p>Here are the requirements for accessibility that should be considered when designing an accordion.</p>
+    <p>Here are the requirements for accessibility that should be considered when designing an accordion. These are accordion specific elements but also rules that apply for all web elements such as colour contrast.</p>
     <table class="requirements-table">
       <thead>
         <tr>
@@ -127,14 +126,38 @@
     </table>
 
     <h3>Design States</h3>
-    <p>Here are the list of states that should be designed and built for an accordion.</p>
-    <ol>
-      <li><strong>Default</strong> - the design with no interaction or expansion.</li>
-      <li><strong>Hover</strong> - the design when an individual button is hovered.</li>
-      <li><strong>Focus</strong> - the design when an individual button is focussed.</li>
-      <li><strong>Focus (other buttons)</strong> - the design of the other buttons in the group when an individual button is focussed.</li>
-      <li><strong>Expanded</strong> - the design when an accordion item is expanded.</li>
-    </ol>
+    <p>Designs for an accordion should cover the following five states, and take into account the requirements listed above.</p>
+    <table class="requirements-table">
+      <thead>
+        <tr>
+          <th>State</th>
+          <th>Description</th>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Default</td>
+          <td>The design with no interaction or expansion.</td>
+        </tr>
+        <tr>
+          <td>Hover</td>
+          <td>The design when an individual button is hovered.</td>
+        </tr>
+        <tr>
+          <td>Focus</td>
+          <td>The design when an individual button is focussed.</td>
+        </tr>
+        <tr>
+          <td>Focus (other buttons)</td>
+          <td>The design of the other buttons in the group when an individual button is focussed.</td>
+        </tr>
+        <tr>
+          <td>Expanded</td>
+          <td>The design when an accordion item is expanded.</td>
+        </tr>
+      </tbody>
+    </table>
 
   </div>
 </div>
@@ -209,42 +232,91 @@
         </tr>
       </tbody>
     </table>
+
+    <h3>Additional Development Requirements</h3>
+    <p>There are a few additional things that you should also take into consideration for the build of an accordion.</p>
+    <table class="requirements-table">
+      <thead>
+        <tr>
+          <th>Aspect</th>
+          <th>Description</th>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Accordion IDs</td>
+          <td>Each accordion item will need a unique set of IDs that connect the button trigger and content panel.</td>
+        </tr>
+        <tr>
+          <td>Heading Triggers</td>
+          <td>You shouldn't attach click events directly to the heading element, or change the heading element to having the role of a button. This will change how screen readers see the heading as you have changed its semantics. You should put a button within the heading.</td>
+        </tr>
+        <tr>
+          <td>Hiding Panels</td>
+          <td>You need to ensure that the content panels aren't just visually hidden, but fully hidden (e.g. display: none), so that they aren't accessed by screen readers or keyboard users. Until they are expanded of course.</td>
+        </tr>
+        <tr>
+          <td>Animations</td>
+          <td>For any animations that move elements, you should respect the system preference for 'Reduced Motion'. An example of this can be seen where the arrow animation is removed in the demo when this preference is turned on.</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
 <div class="wrapper">
-  <h2 class="demo-title">Usage</h2>
+  <h2 class="demo-title">Example HTML Code</h2>
   <div class="demo-wrapper">
 
     <!-- htmlmin:ignore -->
-    <pre class="source-code"><code>const accordions = document.querySelectorAll('.accordion');
-
-for (let i = 0; i < accordions.length; i++) {
-  new Accordion({
-    // Accordion group node
-    accordion: accordions[i],
-    // Identifier of the individual accordion item node within the group node
-    item_class: '.accordion__item',
-    // Class of the content section within the individual accordion item
-    content_class: '.accordion__content',
-    // Class of the trigger within the individual accordion item
-    trigger_class: '.accordion__trigger',
-    // Class to be added to the content section when active
-    content_active_class: 'accordion__content--active',
-    // Class to be added to the individual accordion item when active
-    open_class: 'open',
-    // Whether to open the first accordion item on page load
-    open_first: accordions[i].getAttribute('data-open-first'),
-    // Whether to collapse other accordions when one opened
-    collapse_others: true
-  });
-}</code></pre>
+    <pre class="source-code"><code>&#x3C;ul class=&#x22;accordion&#x22; data-open-first=&#x22;true&#x22;&#x3E;
+    &#x3C;li class=&#x22;accordion__item&#x22;&#x3E;
+        &#x3C;h3 class=&#x22;accordion__title&#x22;&#x3E;
+            &#x3C;button aria-expanded=&#x22;false&#x22; class=&#x22;accordion__trigger&#x22; aria-controls=&#x22;accordion-1-content-1&#x22; id=&#x22;accordion-1-trigger-1&#x22;&#x3E;
+                A specific title for this item
+                &#x3C;span class=&#x22;accordion__handle&#x22;&#x3E;
+                    &#x3C;svg viewBox=&#x22;0 0 20 10&#x22;&#x3E;&#x3C;path d=&#x22;M0,0 10,10 20,0&#x22;&#x3E;&#x3C;/path&#x3E;&#x3C;/svg&#x3E;
+                &#x3C;/span&#x3E;
+            &#x3C;/button&#x3E;
+        &#x3C;/h3&#x3E;
+        &#x3C;div id=&#x22;accordion-1-content-1&#x22; role=&#x22;region&#x22; class=&#x22;accordion__content&#x22; aria-labelledby=&#x22;accordion-1-trigger-1&#x22;&#x3E;
+            &#x3C;p&#x3E;Lorem ipsum dolor sit amet, consectetur adipisicing elit. At culpa nulla veritatis beatae ullam quas repellendus praesentium.&#x3C;/p&#x3E;
+        &#x3C;/div&#x3E;
+    &#x3C;/li&#x3E;
+    &#x3C;li class=&#x22;accordion__item&#x22;&#x3E;
+        &#x3C;h3 class=&#x22;accordion__title&#x22;&#x3E;
+            &#x3C;button aria-expanded=&#x22;false&#x22; class=&#x22;accordion__trigger&#x22; aria-controls=&#x22;accordion-1-content-2&#x22; id=&#x22;accordion-1-trigger-2&#x22;&#x3E;
+                A specific title for this item
+                &#x3C;span class=&#x22;accordion__handle&#x22;&#x3E;
+                    &#x3C;svg viewBox=&#x22;0 0 20 10&#x22;&#x3E;&#x3C;path d=&#x22;M0,0 10,10 20,0&#x22;&#x3E;&#x3C;/path&#x3E;&#x3C;/svg&#x3E;
+                &#x3C;/span&#x3E;
+            &#x3C;/button&#x3E;
+        &#x3C;/h3&#x3E;
+        &#x3C;div id=&#x22;accordion-1-content-2&#x22; role=&#x22;region&#x22; class=&#x22;accordion__content&#x22; aria-labelledby=&#x22;accordion-1-trigger-2&#x22;&#x3E;
+            &#x3C;p&#x3E;Lorem ipsum dolor sit amet, &#x3C;a href=&#x22;&#x22;&#x3E;consectetur&#x3C;/a&#x3E; adipisicing elit. At culpa nulla veritatis beatae ullam quas repellendus praesentium.&#x3C;/p&#x3E;
+        &#x3C;/div&#x3E;
+    &#x3C;/li&#x3E;
+    &#x3C;li class=&#x22;accordion__item&#x22;&#x3E;
+        &#x3C;h3 class=&#x22;accordion__title&#x22;&#x3E;
+            &#x3C;button aria-expanded=&#x22;false&#x22; class=&#x22;accordion__trigger&#x22; aria-controls=&#x22;accordion-1-content-3&#x22; id=&#x22;accordion-1-trigger-3&#x22;&#x3E;
+                A specific title for this item
+                &#x3C;span class=&#x22;accordion__handle&#x22;&#x3E;
+                    &#x3C;svg viewBox=&#x22;0 0 20 10&#x22;&#x3E;&#x3C;path d=&#x22;M0,0 10,10 20,0&#x22;&#x3E;&#x3C;/path&#x3E;&#x3C;/svg&#x3E;
+                &#x3C;/span&#x3E;
+            &#x3C;/button&#x3E;
+        &#x3C;/h3&#x3E;
+        &#x3C;div id=&#x22;accordion-1-content-3&#x22; role=&#x22;region&#x22; class=&#x22;accordion__content&#x22; aria-labelledby=&#x22;accordion-1-trigger-3&#x22;&#x3E;
+            &#x3C;p&#x3E;Lorem ipsum dolor sit amet, &#x3C;a href=&#x22;&#x22;&#x3E;consectetur&#x3C;/a&#x3E; adipisicing elit. At culpa nulla veritatis beatae ullam quas repellendus praesentium.&#x3C;/p&#x3E;
+        &#x3C;/div&#x3E;
+    &#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;</code></pre>
     <!-- htmlmin:ignore -->
   </div>
 </div>
 
 <div class="wrapper">
-  <h2 class="demo-title">Source Code</h2>
+  <h2 class="demo-title">Example Vanilla JavaScript Code</h2>
   <div class="demo-wrapper">
     <!-- htmlmin:ignore -->
     <pre class="source-code"><code>const Accordion = class {
@@ -368,6 +440,157 @@ for (let i = 0; i < accordions.length; i++) {
 };
 
 export default Accordion;</code></pre>
+    <!-- htmlmin:ignore -->
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2 class="demo-title">Example Vanilla JavaScript Usage</h2>
+  <div class="demo-wrapper">
+
+    <!-- htmlmin:ignore -->
+    <pre class="source-code"><code>const accordions = document.querySelectorAll('.accordion');
+
+for (let i = 0; i < accordions.length; i++) {
+  new Accordion({
+    // Accordion group node
+    accordion: accordions[i],
+    // Identifier of the individual accordion item node within the group node
+    item_class: '.accordion__item',
+    // Class of the content section within the individual accordion item
+    content_class: '.accordion__content',
+    // Class of the trigger within the individual accordion item
+    trigger_class: '.accordion__trigger',
+    // Class to be added to the content section when active
+    content_active_class: 'accordion__content--active',
+    // Class to be added to the individual accordion item when active
+    open_class: 'open',
+    // Whether to open the first accordion item on page load
+    open_first: accordions[i].getAttribute('data-open-first'),
+    // Whether to collapse other accordions when one opened
+    collapse_others: true
+  });
+}</code></pre>
+    <!-- htmlmin:ignore -->
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2 class="demo-title">Example SCSS Code</h2>
+  <div class="demo-wrapper">
+    <!-- htmlmin:ignore -->
+    <pre class="source-code"><code>$accordion-border-width: 1px !default;
+$accordion-border-color: black !default;
+$accordion-bg: #fff !default;
+$accordion-trigger-bg: #fff !default;
+$accordion-trigger-bg--focus: #d1dceb !default;
+$accordion-trigger-bg--highlight: #ededed !default;
+$accordion-text-color: black !default;
+
+$accordion-handle-width: 3em !default;
+$accordion-handle-bg: #000 !default;
+$accordion-handle-bg--focus: #335c91 !default;
+$accordion-handle-bg--highlight: #474747 !default;
+
+$accordion-arrow-scale: 0.5 !default;
+$accordion-arrow-stroke: 3px !default;
+$accordion-arrow-color: #fff !default;
+$accordion-arrow-color--focus: $accordion-arrow-color !default;
+$accordion-arrow-color--highlight: $accordion-arrow-color !default;
+$accordion-arrow-transition--timing: 0.3s !default;
+
+$accordion-content-vpad: 1em !default;
+$accordion-content-hpad: 1.5em !default;
+
+// Size of the gap between each accordion item
+$accordion-gap: 2em;
+
+.accordion {
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    border: $accordion-border-width solid $accordion-border-color;
+    background-color: $accordion-bg;
+    margin-top: $accordion-gap;
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__trigger {
+    color: $accordion-text-color;
+    font-weight: 700;
+    margin: 0;
+    width: 100%;
+    border: 0;
+    padding: $accordion-content-vpad ($accordion-content-hpad + $accordion-handle-width) $accordion-content-vpad $accordion-content-hpad;
+    position: relative;
+    background: $accordion-trigger-bg;
+    font-size: inherit;
+    text-align: left;
+    cursor: pointer;
+
+    .focussed-trigger & {
+      background: $accordion-trigger-bg--highlight;
+    }
+
+    &:focus {
+      background: $accordion-trigger-bg--focus;
+    }
+  }
+
+  &__handle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: $accordion-handle-width;
+    background-color: $accordion-handle-bg;
+    border-left: $accordion-border-width solid $accordion-border-color;
+    svg {
+      position: absolute;
+      width: (100% * (1 - $accordion-arrow-scale));
+      height: (100% * (1 - $accordion-arrow-scale));
+      top: (100% * ((1 - $accordion-arrow-scale) / 2));
+      left: (100% * ((1 - $accordion-arrow-scale) / 2));
+      fill: transparent;
+      stroke: $accordion-arrow-color;
+      stroke-width: $accordion-arrow-stroke;
+      overflow: visible;
+      transform-origin: 50% 50%;
+      transform: rotate(0);
+      transition: $accordion-arrow-transition--timing transform ease;
+    }
+
+    .focussed-trigger & {
+      background-color: $accordion-handle-bg--highlight;
+    }
+  }
+
+  &__trigger:focus &__handle {
+    background-color: $accordion-handle-bg--focus;
+  }
+
+  &__item.open &__handle svg {
+    transform: rotate(180deg);
+  }
+  &__content {
+    display: none;
+    padding: $accordion-content-vpad $accordion-content-hpad;
+    border-top: $accordion-border-width solid $accordion-border-color;
+    &>*:first-child {
+      margin-top: 0;
+    }
+    &>*:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__content--active {
+    display: block;
+  }
+}</code></pre>
     <!-- htmlmin:ignore -->
   </div>
 </div>

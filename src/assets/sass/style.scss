@@ -55,7 +55,7 @@ html, body {
   &:after {
     content: '';
     background: #f5f3df;
-    background: linear-gradient(to right, rgba(245,243,223,1) 0%,rgba(245,243,223,1) 15%,rgba(245,243,223,0) 89%,rgba(245,243,223,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: linear-gradient(20deg, rgba(245,243,223,1) 0%,rgba(245,243,223,1) 15%,rgba(245,243,223,0) 89%,rgba(245,243,223,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     width: 30px;
     height: 3px;
     position: absolute;
@@ -78,6 +78,10 @@ html, body {
   >*:first-child {
     margin-top: 0;
   }
+
+  >*:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .demo-title + .demo-wrapper {
@@ -86,6 +90,7 @@ html, body {
 
 h1, h2,h3 {
   color: #fff;
+  font-weight: 900;
 }
 
 h2 {
@@ -100,6 +105,10 @@ h3 {
   // margin: 0 0 3rem;
 }
 
+.page-intro {
+  font-size: 1.25rem;
+}
+
 .requirements-table {
   text-align: left;
   border-collapse: collapse;
@@ -107,18 +116,23 @@ h3 {
   td {
     border-top: 2px #c4b899 solid;
     &:nth-child(1) {
-      font-weight: 500;
+      font-weight: 700;
     }
   }
   th {
     font-size: 1.15rem;
+    font-weight: 900;
   }
   th,td {
     padding: 15px 0 15px 20px;
     vertical-align: top;
+    // border-bottom: 2px #c4b899 solid;
     &:nth-child(1) {
-      width: 130px;
+      // width: 130px;
       padding-left: 0;
+      @media screen and (min-width: 1000px) {
+        width: 200px;
+      }
     }
   }
 }

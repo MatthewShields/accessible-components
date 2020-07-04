@@ -80,6 +80,10 @@ $accordion-gap: 2em;
             transform-origin: 50% 50%;
             transform: rotate(0);
             transition: $accordion-arrow-transition--timing transform ease;
+
+            @media (prefers-reduced-motion: reduce) {
+              transition: none;
+            }
         }
 
         .focussed-trigger & {
