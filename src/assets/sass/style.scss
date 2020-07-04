@@ -55,7 +55,8 @@ html, body {
   &:after {
     content: '';
     background: #f5f3df;
-    width: 20px;
+    background: linear-gradient(to right, rgba(245,243,223,1) 0%,rgba(245,243,223,1) 15%,rgba(245,243,223,0) 89%,rgba(245,243,223,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    width: 30px;
     height: 3px;
     position: absolute;
     top: -16px;

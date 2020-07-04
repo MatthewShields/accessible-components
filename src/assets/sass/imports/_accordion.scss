@@ -1,11 +1,22 @@
 $accordion-border-width: 1px !default;
 $accordion-border-color: black !default;
 $accordion-bg: #fff !default;
-$accordion-bg--focus: #d1dceb !default;
+$accordion-trigger-bg: #fff !default;
+$accordion-trigger-bg--focus: #d1dceb !default;
+$accordion-trigger-bg--highlight: #ededed !default;
 $accordion-text-color: black !default;
 
 $accordion-handle-width: 3em !default;
+$accordion-handle-bg: #000 !default;
+$accordion-handle-bg--focus: #335c91 !default;
+$accordion-handle-bg--highlight: #474747 !default;
+
 $accordion-arrow-scale: 0.5 !default;
+$accordion-arrow-stroke: 3px !default;
+$accordion-arrow-color: #fff !default;
+$accordion-arrow-color--focus: $accordion-arrow-color !default;
+$accordion-arrow-color--highlight: $accordion-arrow-color !default;
+$accordion-arrow-transition--timing: 0.3s !default;
 
 $accordion-content-vpad: 1em !default;
 $accordion-content-hpad: 1.5em !default;
@@ -34,17 +45,17 @@ $accordion-gap: 2em;
         border: 0;
         padding: $accordion-content-vpad ($accordion-content-hpad + $accordion-handle-width) $accordion-content-vpad $accordion-content-hpad;
         position: relative;
-        background: transparent;
+        background: $accordion-trigger-bg;
         font-size: inherit;
         text-align: left;
         cursor: pointer;
 
         .focussed-trigger & {
-          background: #ededed;
+          background: $accordion-trigger-bg--highlight;
         }
 
         &:focus {
-          background: $accordion-bg--focus;
+          background: $accordion-trigger-bg--focus;
         }
 
     }
@@ -54,7 +65,7 @@ $accordion-gap: 2em;
         right: 0;
         height: 100%;
         width: $accordion-handle-width;
-        background-color: $accordion-border-color;
+        background-color: $accordion-handle-bg;
         border-left: $accordion-border-width solid $accordion-border-color;
         svg {
             position: absolute;
@@ -63,21 +74,21 @@ $accordion-gap: 2em;
             top: (100% * ((1 - $accordion-arrow-scale) / 2));
             left: (100% * ((1 - $accordion-arrow-scale) / 2));
             fill: transparent;
-            stroke: #fff;
-            stroke-width: 3;
+            stroke: $accordion-arrow-color;
+            stroke-width: $accordion-arrow-stroke;
             overflow: visible;
             transform-origin: 50% 50%;
             transform: rotate(0);
-            transition: 0.3s transform ease;
+            transition: $accordion-arrow-transition--timing transform ease;
         }
 
         .focussed-trigger & {
-          background-color: #474747;
+          background-color: $accordion-handle-bg--highlight;
         }
     }
 
     &__trigger:focus &__handle {
-      background-color: #335c91;
+      background-color: $accordion-handle-bg--focus;
     }
 
     &__item.open &__handle svg {
@@ -85,7 +96,7 @@ $accordion-gap: 2em;
     }
     &__content {
         display: none;
-        padding: 1.5rem;
+        padding: $accordion-content-vpad $accordion-content-hpad;
         border-top: $accordion-border-width solid $accordion-border-color;
         &>*:first-child {
             margin-top: 0;
