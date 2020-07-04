@@ -1,25 +1,27 @@
 $accordion-border-width: 1px !default;
 $accordion-border-color: black !default;
 $accordion-bg: #fff !default;
+$accordion-text-color: black !default;
+
 $accordion-trigger-bg: #fff !default;
 $accordion-trigger-bg--focus: #d1dceb !default;
 $accordion-trigger-bg--highlight: #ededed !default;
-$accordion-text-color: black !default;
+$accordion-trigger-text-size: 1.25rem !default;
 
-$accordion-handle-width: 3em !default;
+$accordion-handle-width: 3rem !default;
 $accordion-handle-bg: #000 !default;
 $accordion-handle-bg--focus: #335c91 !default;
 $accordion-handle-bg--highlight: #474747 !default;
 
-$accordion-arrow-scale: 0.5 !default;
+$accordion-arrow-scale: 0.3 !default;
 $accordion-arrow-stroke: 3px !default;
 $accordion-arrow-color: #fff !default;
 $accordion-arrow-color--focus: $accordion-arrow-color !default;
 $accordion-arrow-color--highlight: $accordion-arrow-color !default;
 $accordion-arrow-transition--timing: 0.3s !default;
 
-$accordion-content-vpad: 1em !default;
-$accordion-content-hpad: 1.5em !default;
+$accordion-content-vpad: 1rem !default;
+$accordion-content-hpad: 1.5rem !default;
 
 // Size of the gap between each accordion item
 $accordion-gap: 2em;
@@ -35,6 +37,7 @@ $accordion-gap: 2em;
 
     &__title {
       margin: 0;
+      font-size: $accordion-trigger-text-size;
     }
 
     &__trigger {
@@ -69,8 +72,8 @@ $accordion-gap: 2em;
         border-left: $accordion-border-width solid $accordion-border-color;
         svg {
             position: absolute;
-            width: (100% * (1 - $accordion-arrow-scale));
-            height: (100% * (1 - $accordion-arrow-scale));
+            width: (100% * $accordion-arrow-scale);
+            height: (100% * $accordion-arrow-scale);
             top: (100% * ((1 - $accordion-arrow-scale) / 2));
             left: (100% * ((1 - $accordion-arrow-scale) / 2));
             fill: transparent;

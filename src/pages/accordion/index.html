@@ -22,7 +22,7 @@
 </div>
 
 <div class="wrapper">
-  <h2 class="demo-title" id="accessible-accordion-demo"><a href="#accessible-accordion-demo">Accessible Accordion Interactive Demo</a></h2>
+  <h2 class="demo-title" id="accessible-accordion-demo"><a href="#accessible-accordion-demo">Accessible Accordion – Interactive Demo</a></h2>
   <div class="demo-wrapper">
     {% include '../../partials/accordion.html' with {
       'title': 'A title can be helpful to provide an introduction to what the purpose or topic the following group of accordions is.',
@@ -220,15 +220,15 @@
       <tbody>
         <tr>
           <td>aria-expanded</td>
-          <td>Set to TRUE / FALSE on the button element when the accordion is expanded or collapsed.</td>
+          <td><strong>Applied to the button element</strong> - Set to TRUE / FALSE on the button element when the accordion is expanded or collapsed.</td>
         </tr>
         <tr>
           <td>aria-controls</td>
-          <td>ID of the panel that the button element should expand or collapse.</td>
+          <td><strong>Applied to the button element</strong> - ID of the panel element that the button controls.</td>
         </tr>
         <tr>
           <td>aria-labelledby</td>
-          <td>ID of the button element that controls the panel element.</td>
+          <td><strong>Applied to the panel element</strong> - ID of the button element that controls the panel.</td>
         </tr>
       </tbody>
     </table>
@@ -270,7 +270,7 @@
   <div class="demo-wrapper">
 
     <!-- htmlmin:ignore -->
-    <pre class="source-code"><code>&#x3C;ul class=&#x22;accordion&#x22; data-open-first=&#x22;true&#x22;&#x3E;
+    <pre class="source-code"><code class="language-html">&#x3C;ul class=&#x22;accordion&#x22; data-open-first=&#x22;true&#x22;&#x3E;
     &#x3C;li class=&#x22;accordion__item&#x22;&#x3E;
         &#x3C;h3 class=&#x22;accordion__title&#x22;&#x3E;
             &#x3C;button aria-expanded=&#x22;false&#x22; class=&#x22;accordion__trigger&#x22; aria-controls=&#x22;accordion-1-content-1&#x22; id=&#x22;accordion-1-trigger-1&#x22;&#x3E;
@@ -319,16 +319,19 @@
   <h2 class="demo-title" id="example-js-code"><a href="#example-js-code">Example Vanilla JavaScript Code</a></h2>
   <div class="demo-wrapper">
     <!-- htmlmin:ignore -->
-    <pre class="source-code"><code>const Accordion = class {
+    <pre class="source-code"><code class="language-javascript">const Accordion = class {
   constructor(s) {
     this.s = s;
     this.accordion = s.accordion;
     this.accordion_items = Array.prototype.slice.call(this.accordion.querySelectorAll(s.item_class));
     this.accordion_contents = Array.prototype.slice.call(this.accordion.querySelectorAll(s.content_class));
     this.accordion_triggers = Array.prototype.slice.call(this.accordion.querySelectorAll(s.trigger_class));
+    this.init_click_focus = false;
 
     this.accordion_click = this.accordion_click.bind(this);
     this.navigate_accordions = this.navigate_accordions.bind(this);
+    this.focus_trigger = this.focus_trigger.bind(this);
+    this.blur_trigger = this.blur_trigger.bind(this);
     this._init_events();
   }
 
@@ -337,12 +340,26 @@
     for (let i = 0; i < this.accordion_triggers.length; i++) {
       this.accordion_triggers[i].onclick = this.accordion_click;
       this.accordion_triggers[i].onkeydown = this.navigate_accordions;
+      this.accordion_triggers[i].onfocus = this.focus_trigger;
+      this.accordion_triggers[i].onblur = this.blur_trigger;
     }
 
     // If told to open the first accordion item trigger click
     if((this.s.open_first === true || this.s.open_first === 'true') && this.accordion_triggers.length > 0) {
       this.accordion_triggers[0].click();
+    } else {
+      this.init_click_focus = true;
     }
+  }
+
+  focus_trigger() {
+    console.log('focus');
+    this.s.accordion.classList.add('focussed-trigger');
+  }
+
+  blur_trigger() {
+    console.log('blur');
+    this.s.accordion.classList.remove('focussed-trigger');
   }
 
   navigate_accordions(e) {
@@ -426,14 +443,19 @@
       // Add the active class to the accordion content using corrosponding index
       this.accordion_contents[active_index].classList.add(this.s.content_active_class);
 
-      // Get the bounding data for the clicked trigger
-      var bounding = e.currentTarget.getBoundingClientRect();
-      // Check against the current triggers position
-      if (bounding.top >= 0 && bounding.left >= 0 && bounding.right <= window.innerWidth && bounding.bottom <= window.innerHeight) {
-        // In view so do nothing
+      // Don't scroll into view in the first artificial click to expand first item
+      if(this.init_click_focus) {
+        // Get the bounding data for the clicked trigger
+        var bounding = e.currentTarget.getBoundingClientRect();
+        // Check against the current triggers position
+        if (bounding.top >= 0 && bounding.left >= 0 && bounding.right <= window.innerWidth && bounding.bottom <= window.innerHeight) {
+          // In view so do nothing
+        } else {
+          // Scroll new active accordion block into view
+          e.currentTarget.scrollIntoView();
+        }
       } else {
-        // Scroll new active accordion block into view
-        e.currentTarget.scrollIntoView();
+        this.init_click_focus = true;
       }
     }
   }
