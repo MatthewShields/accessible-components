@@ -5,6 +5,7 @@ const Accordion = class {
     this.accordion_items = Array.prototype.slice.call(this.accordion.querySelectorAll(s.item_class));
     this.accordion_contents = Array.prototype.slice.call(this.accordion.querySelectorAll(s.content_class));
     this.accordion_triggers = Array.prototype.slice.call(this.accordion.querySelectorAll(s.trigger_class));
+    this.init_click_focus = false;
 
     this.accordion_click = this.accordion_click.bind(this);
     this.navigate_accordions = this.navigate_accordions.bind(this);
@@ -25,6 +26,8 @@ const Accordion = class {
     // If told to open the first accordion item trigger click
     if((this.s.open_first === true || this.s.open_first === 'true') && this.accordion_triggers.length > 0) {
       this.accordion_triggers[0].click();
+    } else {
+      this.init_click_focus = true;
     }
   }
 
@@ -119,14 +122,19 @@ const Accordion = class {
       // Add the active class to the accordion content using corrosponding index
       this.accordion_contents[active_index].classList.add(this.s.content_active_class);
 
-      // Get the bounding data for the clicked trigger
-      var bounding = e.currentTarget.getBoundingClientRect();
-      // Check against the current triggers position
-      if (bounding.top >= 0 && bounding.left >= 0 && bounding.right <= window.innerWidth && bounding.bottom <= window.innerHeight) {
-        // In view so do nothing
+      // Don't scroll into view in the first artificial click to expand first item
+      if(this.init_click_focus) {
+        // Get the bounding data for the clicked trigger
+        var bounding = e.currentTarget.getBoundingClientRect();
+        // Check against the current triggers position
+        if (bounding.top >= 0 && bounding.left >= 0 && bounding.right <= window.innerWidth && bounding.bottom <= window.innerHeight) {
+          // In view so do nothing
+        } else {
+          // Scroll new active accordion block into view
+          e.currentTarget.scrollIntoView();
+        }
       } else {
-        // Scroll new active accordion block into view
-        e.currentTarget.scrollIntoView();
+        this.init_click_focus = true;
       }
     }
   }
