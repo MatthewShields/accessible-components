@@ -191,7 +191,11 @@ body.menu-open {
   font-weight: 700;
   color: #A3A3A3;
   text-decoration: none;
-  margin: 0;
+  margin: 2rem 0 0;
+
+  &:first-child {
+    margin: 0;
+  }
 
   &:before,
   &:after {
@@ -319,6 +323,11 @@ h2 {
 h3 {
   font-size: 1.35rem;
   margin: 3rem 0 1rem;
+}
+
+a {
+  color: #F4F0C8;
+  font-weight: 700;
 }
 
 .page-title {
