@@ -1,6 +1,6 @@
 {
-  "GA_ID": false,
+  "GA_ID": "UA-53672778-4",
   "LIVE_URL": "https://accessiblecomponents.dev",
-  "TWITTER_SITE": false,
-  "SOCIAL_IMAGE_URL": false
+  "TWITTER_SITE": "AccessibleComponents.dev",
+  "SOCIAL_IMAGE_URL": "/assets/images/accessible-components-dev.jpg"
 }
