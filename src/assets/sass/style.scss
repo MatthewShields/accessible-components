@@ -164,6 +164,12 @@ body.menu-open {
     color: #000;
     padding: 10px 20px;
   }
+
+  &--mobile {
+    @media screen and (min-width: 1000px) {
+      display: none;
+    }
+  }
 }
 
 .main-content {
@@ -296,6 +302,11 @@ body.menu-open {
     color: #000;
   }
 
+  a {
+    color: inherit;
+    font-weight: 700;
+  }
+
   >*:first-child {
     margin-top: 0;
   }
@@ -323,6 +334,10 @@ h2 {
 h3 {
   font-size: 1.35rem;
   margin: 3rem 0 1rem;
+}
+
+li {
+  margin: 1rem 0;
 }
 
 a {
