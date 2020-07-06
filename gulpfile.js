@@ -91,7 +91,7 @@ gulp.task('postcss', function () {
         ],
         keyframes: true,
         variables: true,
-        fontFace: true,
+        fontFace: false,
         defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
       })
     )
