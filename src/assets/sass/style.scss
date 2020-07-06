@@ -28,7 +28,7 @@
   font-family: 'Noto Sans JP';
   font-style: normal;
   font-weight: 300;
-  font-display: swap;
+  font-display: fallback;
   src: local('Noto Sans Japanese Light'), local('NotoSansJapanese-Light'),
        url('../../fonts/noto-sans-jp-v25-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
        url('../../fonts/noto-sans-jp-v25-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
@@ -38,7 +38,7 @@
   font-family: 'Noto Sans JP';
   font-style: normal;
   font-weight: 700;
-  font-display: swap;
+  font-display: fallback;
   src: local('Noto Sans Japanese Bold'), local('NotoSansJapanese-Bold'),
        url('../../fonts/noto-sans-jp-v25-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
        url('../../fonts/noto-sans-jp-v25-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
@@ -48,7 +48,7 @@
   font-family: 'Noto Sans JP';
   font-style: normal;
   font-weight: 900;
-  font-display: swap;
+  font-display: fallback;
   src: local('Noto Sans Japanese Black'), local('NotoSansJapanese-Black'),
        url('../../fonts/noto-sans-jp-v25-latin-900.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
        url('../../fonts/noto-sans-jp-v25-latin-900.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
