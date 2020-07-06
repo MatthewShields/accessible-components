@@ -1,0 +1,101 @@
+<!-- prettier-ignore -->
+{% set title          = 'Accordion | Accessible Components' %}
+{% set description    = 'A breakdown of the approach to building an accessibile accordion with HTML, SCSS and JavaScript.' %}
+{% set canonical      = '/skip-links/' %}
+
+<!-- prettier-ignore -->
+{% extends '../../layout/index.html' %}
+{% block content %}
+
+<div class="wrapper page-intro">
+  <h1 class="page-title">Skip Link Accessibility</h1>
+  <p>Some users navigate the web using their keyboards rather then a mouse or touch. Skip Links are a method of allowing them to skip over, or directly to, specific areas of content on the page.</p>
+</div>
+
+<div class="wrapper">
+  <h2 class="demo-title" id="what-are-skip-links"><a href="#what-are-skip-links">What are Skip Links?</a></h2>
+  <div class="demo-wrapper">
+    <p>Skip links are visually hidden anchor links, then when focussed on through tabbing, become visible. Anchor links contain the ID of the element that they are targetted to, so when clicked to page will navigate to that element.</p>
+    <p>You can see an example on this site, when you land on a page press tab, and you will see a link appear at the top left corner or your screen reader will speak it.</p>
+    <img src="/assets/images/skip-link-example.jpg" alt="A screenshot of an example of the skip to main content skip link on this site.">
+    <p>When you are focussed on this and then press enter, the focus shifts to the main content area. You can see the effects of this when you press tab again. Rather than focussing within the menu it will then focus on the first title within the content.</p>
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2 class="demo-title" id="why-need-skip-links"><a href="#why-need-skip-links">Why do you need Skip Links?</a></h2>
+  <div class="demo-wrapper">
+    <p>When using a keyboard to navigate throughout a website, you use the tab / shift + tab key to move between focusable elements, such as buttons and links.</p>
+    <p>Combined with the fact that at the top of every page there is usually the same navigation, you would have to tab over the same nav items on every page before getting to the main content. This is a bad user experience at the least, or could be additional physical strain at worst.</p>
+    <p>Skip Links allow you to, as they are named, skip over these areas and go directly to a specified area, such as the main content area. This provides a better user experience and less unnecessary tabbing.</p>
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2 class="demo-title" id="how-create-skip-links"><a href="#how-create-skip-links">How do you create Skip Links?</a></h2>
+  <div class="demo-wrapper">
+    <p>Skip Links for the most part will consist of two parts, the HTML &#x3C;a&#x3E; tag, and the CSS styling to hide/reveal on focus. Depending on your situation JS may be involved to create them but the result should be the same.</p>
+    <h3>Skip Link HTML</h3>
+    <p>This consists of an &#x3C;a&#x3E; tag with a hash href to the ID of the target element. The text should also adaquately describe that the user is going to be moved around the document, and where to. Try to be simple and clear.</p>
+    <!-- htmlmin:ignore -->
+    <pre class="source-code"><code class="language-html">&#x3C;a href=&#x22;#main-content&#x22; class=&#x22;sr-only&#x22;&#x3E;Skip to main content&#x3C;/a&#x3E;</code></pre>
+<!-- htmlmin:ignore -->
+<h3>Skip Link CSS</h3>
+<p>With this CSS we are visually hiding the skip link, but without either visibility: hidden or display: none, this ensures that the element can still be tabbed to.</p>
+<p>When the element is focussed to, the CSS makes the skip link visible again. It is absolutely positioned, but without a top or left value, so that it remains in the same location, but without impacting the layout of the page.</p>
+<p>These are some basic styles, but make sure that whatever styling you go with provides enough colour contrast and is fully visible when used on your website.</p>
+<!-- htmlmin:ignore -->
+<pre class="source-code"><code>.sr-only {
+  font-size: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  width: 0;
+}
+
+.sr-only:focus {
+  font-size: 1rem;
+  width: auto;
+  height: auto;
+  z-index: 10;
+  background: #fff;
+  color: #000;
+  padding: 10px 20px;
+}</code></pre>
+    <!-- htmlmin:ignore -->
+    <h3>Skip Link Demo</h3>
+    <p>Under this paragraph is a skip link back to the top of this section, incase you need to read it again.</p>
+    <a href="#how-create-skip-links" class="sr-only">Read how to create skip links again</a>
+  </div>
+</div>
+
+<div class="wrapper">
+  <h2 class="demo-title" id="when-need-skip-links"><a href="#when-need-skip-links">When do you need Skip Links?</a></h2>
+  <div class="demo-wrapper">
+    <p>At a minimum, you need a skip link as the first focusable element on the page to take you to the main content area. This is unless the main content area is the first section of your content.</p>
+    <h3>Is a Skip Link to Main Content enough?</h3>
+    <p>When reading articles about skip links, this might actually be the only example mentioned. This isn't always the case though. The approach is to help avoid excessive tabbing and help people have a better user experience, this isn't just caused by the main navigation.</p>
+    <p>Another example of this would be an embedded social feed. Inside the feed there may be a very large amount of focusable elements, between links to profiles, posts and links within the posts themselves. If you arent interested in that content at all, you might find it more helpful to be able to skip over it.</p>
+
+    <h3>Two-way navigation</h3>
+    <p>It is important to remember that page navigation works both ways though. To use the social feed example again, if you were to put a skip link at the top of the social feed, this would improve the experience for people when navigating down the page.</p>
+    <p>This however wouldn't be of assistance to the user navigating back up the page, they would still be made to tab through the feed and all the links within. If you were to include another skip link at the bottom, providing the same experience would be better.</p>
+
+    <h3>How to identify when you need skip links?</h3>
+    <p>The best way? Navigate your site with a keyboard.</p>
+    <p>You will quickly spot places where you wish that you didn't have to tab repetatively. I would recommend when doing so, try to be achieving tasks, rather than just checking that the tab navigation physically works.</p>
+    <p>For some ideas, here are other times that you may need to include skip links:</p>
+    <ul>
+      <li><strong>Skip to footer</strong> - located at the top of the page.</li>
+      <li><strong>Back to top of page</strong> - located in the footer.</li>
+      <li><strong>Back to Menu toggle</strong> - located at the bottom of the mobile menu.</li>
+      <li><strong>Social Feeds</strong> - located both before and after.</li>
+      <li><strong>Comment Feeds</strong> - located both before and after.</li>
+      <li><strong>Contact Forms</strong> - located both before and after.</li>
+      <li><strong>Accessibility Statement</strong> - located at the top of the page.</li>
+    </ul>
+  </div>
+</div>
+
+
+{% endblock %}
