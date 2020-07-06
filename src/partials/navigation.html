@@ -6,11 +6,11 @@
 
   {% set nav_links = [
     ['Accordion', '/accordion/'],
+    ['Skip Links', '/skip-links/'],
     ['Modal Dialog', false],
     ['Tablist', false],
     ['Slider', false],
     ['Menu', false],
-    ['Skip Links', false],
   ] %}
   <div class="sidebar__inner">
     <nav class="main-nav" id="main-nav">
@@ -30,10 +30,10 @@
       {% endfor %}
       </ul>
     </nav>
-    <a href="#menu-toggle" class="skip-link skip-link--mobile">Return to menu toggle button</a>
     <a href="https://matthewshields.co.uk/" target="_blank" class="main-nav__link main-nav__link--small">
       <img src="/assets/images/matthew-shields.svg" alt="Matthew Shields Logo" class="link-icon">
       Created by Matthew Shields
     </a>
+    <a href="#menu-toggle" class="sr-only sr-only--mobile">Return to menu toggle button</a>
   </div>
 </div>
