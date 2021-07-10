@@ -1,0 +1,28 @@
+<!-- prettier-ignore -->
+{% set title          = 'Slider (Carousel) | Accessible Components' %}
+{% set description    = 'A breakdown of the approach to building an accessibile slider with HTML, SCSS and JavaScript.' %}
+{% set canonical      = '/slider/' %}
+
+<!-- prettier-ignore -->
+{% extends '../../layout/index.html' %}
+{% block content %}
+
+<div class="wrapper page-intro">
+  <h1 class="page-title">Accessible Sliders (or Carousels)</h1>
+  <p>Widely used in alot of sites, sliders / carousels / content sliders (or whatever name they go by for you personnally) allow for multiple sets of content to be displayed in the same sized spot and transition through them.</p>
+</div>
+
+<div class="wrapper">
+  {% include '../../partials/title.html' with {
+    title: 'Full Disclosure: I have issues with Sliders'
+  }%}
+  <div class="demo-wrapper">
+    <p>I really don't like them, there I said it. Unfortunately though they are something that still come up alot in the projects that I work on and I'm sure will do for plenty of you out there.</p>
+    <p>I think one of my issues with sliders are that they often come from a desire to make multiple sets of content equally as important as each other, which then usually leads to a desire for a quite fast autoplay setting to increase the chances that more of the slides get seen.</p>
+    <p>In my experience this usually leads to the slides being more equally important to each other, but not in the way that they wanted. Not everyone can read at super fast speeds (myself included) and so usually I just end up blocking out the content entirely.</p>
+    <p>That being said though sliders aren't inheritantly bad. They are just another way of displaying content. But when deciding to use a slider, make sure that you are doing everything you can to make it as accessible as possible.</p>
+  </div>
+</div>
+
+
+{% endblock %}
